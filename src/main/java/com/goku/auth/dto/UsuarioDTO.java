@@ -1,13 +1,8 @@
 package com.goku.auth.dto;
 
-import javax.validation.constraints.NotBlank;
+public class UsuarioDTO {
 
-public class CredenciaisDTO {
-
-	@NotBlank(message = "{campo.obrigatorio.login}")
 	private String login;
-
-	@NotBlank(message = "{campo.obrigatorio.senha}")
 	private String senha;
 
 	public String getLogin() {
