@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,9 +38,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable().authorizeRequests()
-				.antMatchers("/authenticate", "/v2/api-docs", "/configuration/ui", "/swagger-resources/**",
-						"/configuration/**", "/swagger-ui.html", "/webjars/**")
-				.permitAll().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+				.antMatchers("/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**").permitAll();
 	}
 
 }

@@ -15,6 +15,8 @@ public class Usuario implements Serializable {
 
 	private String senha;
 
+	private String permissao;
+
 	public String getLogin() {
 		return login;
 	}
@@ -29,6 +31,14 @@ public class Usuario implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(String permissao) {
+		this.permissao = permissao;
 	}
 
 }

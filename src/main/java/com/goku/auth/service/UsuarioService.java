@@ -6,4 +6,6 @@ public interface UsuarioService {
 
 	UsuarioDTO buscarUsuario(String username);
 
+	String buscarPermissao(String login);
+
 }

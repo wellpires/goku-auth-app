@@ -21,4 +21,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 				.orElseThrow(UsuarioNotFoundException::new);
 	}
 
+	@Override
+	public String buscarPermissao(String login) {
+		return buscarUsuario(login).getPermissao();
+	}
+
 }

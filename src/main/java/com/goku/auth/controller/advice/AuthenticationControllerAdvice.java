@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -25,6 +26,15 @@ public class AuthenticationControllerAdvice {
 		logger.error(exception.getMessage(), exception);
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 				.body(new ErrorResponseBuilder().message(message).build());
+	}
+
+	@ExceptionHandler(BadCredentialsException.class)
+	public ResponseEntity<ErrorResponse> handleBadCredentialsException(
+			BadCredentialsException badCredentialsException) {
+
+		logger.error(badCredentialsException.getMessage(), badCredentialsException);
+
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 	}
 
 }
